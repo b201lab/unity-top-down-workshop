@@ -96,6 +96,7 @@ _playerToMouse_ adalah vektor yang menghubungkan posisi _mouse_ dengan posisi _p
 
 Indeks yang didapat kemudian diteruskan ke parameter pada _Animator Controller_ melalui fungsi _AnimatorController.SetInteger()_ yang mengambil dua paramater; nama parameter yang akan diatur nilainya dan besar nilai yang akan diberikan.
 
+Berikut adalah isi program pada file _MovementInput.cs_ per bab kedua:
 ```C#
 public class MovementInput : MonoBehaviour
 {
