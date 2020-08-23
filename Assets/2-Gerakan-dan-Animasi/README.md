@@ -69,7 +69,7 @@ Untuk menambahkan potongan _spritesheet_ ke dalam _Animation_, kita perlu menamb
 
 Buka _window Animation_ untuk mulai mengatur animasi _sprite_ dengan memilih menu _Window > Animation > Animation_. Dengan objek _player_ terpilih, akan muncul _drop down menu_ di bawah teks _Preview_ yang menampilkan seluruh _Animation_ yang berada di dalam _Animator Controller_ objek _player_. Kita coba atur _Animation_ bernama _Up_ terlebih dahulu. Untuk memberi gambar pada _Animation_, cukup pindahkan _sprite_ yang menunjukkan _player_ menghadap ke atas ke panel di mana tombol _Add Property_ berada. Secara otomatis potongan _sprite_ akan masuk ke _keyframe_ ke-0.
 
-![Isi _Animation_](/img/animation.png)
+(/img/animation.png)
 
 Berpindah ke _window Animator Controller_, kita atur bagaimana transisi tiap animasi berjalan. Setiap kotak yang Anda lihat di _window Animator Controller_ disebut sebagai _state_, baik kotak bertuliskan _Any State_, _End_, _Start_, dan _Animation_ yang telah Anda masukkan. Di _Animator Controller_ kita mengatur bagaimana alur perpindahan _state_ berjalan. Karena animasi pergerakan _player_ dapat berubah tergantung arah perpindahan _player_ dan tidak peduli pada arah mana _player_ menghadap, kita hubungkan kotak _Any State_ ke-empat _Animation_ kita dengan meng-klik kanan kotak _Any State_, pilih _Make Transition_, kemudian pilih _Animation_ yang ingin dihubungkan.
 
