@@ -76,3 +76,51 @@ Berpindah ke _window Animator Controller_, kita atur bagaimana transisi tiap ani
 Transisi animasi akan berjalan apabila beberapa kondisi terpenuhi. Pada _Animator Controller_ terdapat empat macam tipe parameter yang bisa kita gunakan untuk menyusun kondisi transisi animasi; _float_, _integer_, _bool_, dan _trigger_. Parameter-parameter yang dibutuhkan terdapat pada tab _parameters_. Kita buat paramater baru bertipe _integer_. Penjelasan mengenai penggunaan parameter akan diterangkan pada sub-bab berikutnya.
 
 ## Mengubah _Sprite_ Objek _Player_ Berdasarkan Posisi _Mouse_
+Kita akan mengaplikasikan teori trigonometri untuk membantu pekerjaan kita menentukan _sprite player_ yang harus ditampilkan sesuai dengan posisi _mouse_ terhadap objek _player_.
+
+Perhatikan gambar berikut:
+![Sudut](/img/sudut.png)
+
+Kita memiliki _spritesheet_ yang terdiri dari delapan gambar berbeda yang juga menghadap ke arah yang berbeda juga. Pada gambar, garis hitam menunjukkan besar sudut yang dimiliki _spritesheet_ kita, sedangkan garis merah adalah jangkauan yang apabila posisi _mouse_ berada di antara kedua garis merah, maka _player_ akan "menghadap" ke arah dengan sudut sesuai dengan garis hitam yang terapit oleh kedua garis merah tersebut. Angka biru adalah indeks arah, dengan 0 menghadap ke kanan, 1 menghadap ke kanan atas, dan seterusnya. Indeks inilah yang akan kita cari untuk mengatur transisi animasi pada _Animator Controller_.
+
+Perhitungan untuk mendapatkan indeks didefinisikan dengan rumus berikut:
+![Rumus Indeks](/img/index-eq.png)
+
+_playerToMouse_ adalah vektor yang menghubungkan posisi _mouse_ dengan posisi _player_. Posisi _mouse_ didapat dengan menggunakan fungsi _Camera.ScreenToWorldPoint()_, di mana input yang dibutuhkan adalah posisi _mouse_ pada layar (diperoleh dari _Input.mousePosition_).
+
+```C#
+    Vector3 mouseScreenToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    Vector3 mouseToPlayer = (mouseScreenToWorld - transform.position);
+    int directionID = (int)((((Mathf.Atan2(mouseToPlayer.y, mouseToPlayer.x) * Mathf.Rad2Deg)+360f)%360 + 22.5f)/ 45)%8;
+```
+
+Indeks yang didapat kemudian diteruskan ke parameter pada _Animator Controller_ melalui fungsi _AnimatorController.SetInteger()_ yang mengambil dua paramater; nama parameter yang akan diatur nilainya dan besar nilai yang akan diberikan.
+
+```C#
+public class MovementInput : MonoBehaviour
+{
+  private int directionID;
+  private Animator animator;
+  private Vector3 mouseScreenToWorld, mouseToPlayer;
+  public float speed = 5f;
+
+  void Start()
+  {
+    animator = gameObject.GetComponent<Animator>();
+  }
+
+  void Update()
+  {
+    float inputX = Input.GetAxisRaw("Horizontal");
+    float inputY = Input.GetAxisRaw("Vertical");
+    
+    Vector3 movement = new Vector3(inputX, inputY, 0f).normalized;
+    mouseScreenToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    mouseToPlayer = (mouseScreenToWorld - transform.position);
+    directionID = (int)((((Mathf.Atan2(mouseToPlayer.y, mouseToPlayer.x) * Mathf.Rad2Deg)+360f)%360 + 22.5f)/ 45)%8;
+
+    animator.SetInteger("directionIndex", directionID);
+    transform.Translate(movement * speed * Time.deltaTime);
+  }
+}
+```
