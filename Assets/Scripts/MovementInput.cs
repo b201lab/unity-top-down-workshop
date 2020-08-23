@@ -14,10 +14,11 @@ public class MovementInput : MonoBehaviour
 
   void Update()
   {
-    float inputX = Input.GetAxis("Horizontal");
-    float inputY = Input.GetAxis("Vertical");
-
-    Vector3 movement = new Vector3(inputX, inputY, 0f);
+    float inputX = Input.GetAxisRaw("Horizontal");
+    float inputY = Input.GetAxisRaw("Vertical");
+    
+    //Input axis are normalized to ensure every possible movements are in the same speed
+    Vector3 movement = new Vector3(inputX, inputY, 0f).normalized;
 
     transform.Translate(movement * speed * Time.deltaTime);
 
