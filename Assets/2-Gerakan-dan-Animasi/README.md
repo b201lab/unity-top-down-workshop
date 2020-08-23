@@ -65,11 +65,11 @@ Pada _Sprite Editor_, pilih menu _Slice_, kemudian pada opsi _Type_, pilih _Grid
 
 Untuk menambahkan potongan _spritesheet_ ke dalam _Animation_, kita perlu menambahkan _component Animator Controller_ terlebih dahulu ke objek _player_. _Component Animator Controller_ ini perlu sebuah objek _Animator Controller_ yang bisa kita buat pada panel _Project_ dengan meng-klik kanan _window Project_, kemudian pilih _Create > Animator Controller_. Kemudian kita buat objek _Animation_ dengan meng-klik kanan pada _window Project_, pilih _Create > Animation_. Untuk bab ini kita buat empat objek _Animation_ dengan nama _Up_, _Down_, _Right_, dan _Left_. _Double-click_ objek _Animator Controller_ yang baru saja dibuat, kemudian _drag_ semua objek _Animation_ yang telah dibuat ke _window Animator Controller_ yang telah muncul.
 
-![Isi _Animator Controller](/img/animator-controller.png)
+![Isi _Window Animator Controller](/img/animator-controller.png)
 
 Buka _window Animation_ untuk mulai mengatur animasi _sprite_ dengan memilih menu _Window > Animation > Animation_. Dengan objek _player_ terpilih, akan muncul _drop down menu_ di bawah teks _Preview_ yang menampilkan seluruh _Animation_ yang berada di dalam _Animator Controller_ objek _player_. Kita coba atur _Animation_ bernama _Up_ terlebih dahulu. Untuk memberi gambar pada _Animation_, cukup pindahkan _sprite_ yang menunjukkan _player_ menghadap ke atas ke panel di mana tombol _Add Property_ berada. Secara otomatis potongan _sprite_ akan masuk ke _keyframe_ ke-0.
 
-(/img/animation.png)
+![Isi _Window Animation_](/img/animation.png)
 
 Berpindah ke _window Animator Controller_, kita atur bagaimana transisi tiap animasi berjalan. Setiap kotak yang Anda lihat di _window Animator Controller_ disebut sebagai _state_, baik kotak bertuliskan _Any State_, _End_, _Start_, dan _Animation_ yang telah Anda masukkan. Di _Animator Controller_ kita mengatur bagaimana alur perpindahan _state_ berjalan. Karena animasi pergerakan _player_ dapat berubah tergantung arah perpindahan _player_ dan tidak peduli pada arah mana _player_ menghadap, kita hubungkan kotak _Any State_ ke-empat _Animation_ kita dengan meng-klik kanan kotak _Any State_, pilih _Make Transition_, kemudian pilih _Animation_ yang ingin dihubungkan.
 
