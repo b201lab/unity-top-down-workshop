@@ -16,20 +16,22 @@ public class MovementInput : MonoBehaviour
 
   void Update()
   {
+    // Dapatkan nilai input dari keyboard
     float inputX = Input.GetAxisRaw("Horizontal");
     float inputY = Input.GetAxisRaw("Vertical");
     
+    // Gunakan nilai yang telah didapatkan untuk menggerakkan pemain
     //Input axis are normalized to ensure every possible movements are in the same speed
     Vector3 movement = new Vector3(inputX, inputY, 0f).normalized;
     mouseScreenToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     mouseToPlayer = (mouseScreenToWorld - transform.position);
     directionID = (int)((((Mathf.Atan2(mouseToPlayer.y, mouseToPlayer.x) * Mathf.Rad2Deg)+360f)%360 + 22.5f)/ 45)%8;
-    Debug.Log((Mathf.Atan2(mouseToPlayer.y, mouseToPlayer.x) * Mathf.Rad2Deg + 360f)%360 + ", "+directionID + "("+ mouseToPlayer.x + ", "+mouseToPlayer.y+")");
-    Debug.DrawLine(transform.position, mouseScreenToWorld, Color.red);
-    // animator.SetFloat("moveHori", movement.x);
-    // animator.SetFloat("moveVert", movement.y);
-    animator.SetInteger("directionIndex", directionID);
+    // Debug.Log((Mathf.Atan2(mouseToPlayer.y, mouseToPlayer.x) * Mathf.Rad2Deg + 360f)%360 + ", "+directionID + "("+ mouseToPlayer.x + ", "+mouseToPlayer.y+")");
+    // Debug.DrawLine(transform.position, mouseScreenToWorld, Color.red);
+    
 
+    // Atur animasi dan gerakkan pemain
+    animator.SetInteger("directionIndex", directionID);
     transform.Translate(movement * speed * Time.deltaTime);
   }
 }
