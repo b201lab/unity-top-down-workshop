@@ -1,3 +1,0 @@
-# Pengenalan Konsep
-
-TBA
