@@ -65,11 +65,11 @@ Secara _default_, scene yang baru dibuat memiliki _game object_ `Main Camera` ya
 
 ### Transformasi Game Object
 
-Setiap _game object_ memiliki komponen `Transform` yang digunakan untuk merepresentasikan transformasi (posisi, rotasi, dan skala) dari _game object_ pada suatu _scene_.
+Setiap _game object_ memiliki _component_ `Transform` yang digunakan untuk merepresentasikan transformasi (posisi, rotasi, dan skala) dari _game object_ pada suatu _scene_.
 Terdapat dua cara untuk mengubah transformasi suatu _game object_, yakni sebagai berikut:
 
 1. Mengubah langsung pada **Scene View** menggunakan _tools_ yang tersedia pada _toolbar_ (sebelah kiri atas), seperti `Move Tool`, `Rotate Tool`, `Scale Tool`, dan lain sebagainya.
-2. Mengubah nilai dari komponen `Transform` secara langsung pada **Inspector Window**. (sebelumnya klik _game object_ pada **Scene View** atau **Hierarchy Window** untuk menampilkan detail komponen dari _game object_)
+2. Mengubah nilai dari _component_ `Transform` secara langsung pada **Inspector Window**. (sebelumnya klik _game object_ pada **Scene View** atau **Hierarchy Window** untuk menampilkan detail _component_ dari _game object_)
 
 > Informasi lebih lanjut mengenai Transformasi _game object_ pada Unity bisa dilihat [disini](https://docs.unity3d.com/Manual/Transforms.html).
 
@@ -144,8 +144,8 @@ void Start()
 }
 ```
 
-Penjelasan singkat dari baris _program_ diatas, _program_ akan mengubah nilai `position` dari _component_ `transform` menjadi `new Vector3(0f, 0f, 0f)`.
-`Vector3` sendiri merepresentasikan posisi _3D_ yang terdiri dari `x`, `y`, dan `z`, seperti pada nilai `Position` pada component `Transform` di Inspector Window.
+Penjelasan singkat dari baris _program_ diatas, _program_ akan mengubah nilai `position` dari `transform` menjadi `new Vector3(0f, 0f, 0f)`.
+`Vector3` sendiri merepresentasikan posisi _3D_ yang terdiri dari `x`, `y`, dan `z`, seperti pada nilai `Position` pada _component_ `Transform` di **Inspector Window**.
 Sedangkan `0f` sendiri berarti nilai `0` dalam bentuk _float_ (pecahan).
 
 > Sebagai catatan, `transform` merupakan [_member variable_](https://en.wikipedia.org/wiki/Member_variable) dari _class_ `MonoBehaviour` yang merupakan [_parent class_](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)) dari _class_ `Centerized`.
@@ -176,25 +176,22 @@ Pada bagian ini kita akan membahas lebih lanjut mengenai bagaimana pengaruh _ord
 
 > Informasi lebih lanjut mengenai _order of execution_ pada **Unity** bisa dilihat [disini](https://docs.unity3d.com/Manual/ExecutionOrder.html).
 
-### Membuat Component Rotating
+### Component Rotating
 
 Pada percobaan kali ini, kita akan membuat _component_ baru yang akan digunakan untuk membuat objek selalu berputar selama game sedang berlangsung
 Untuk itu, pertama, buat **C#** _script_ baru dan beri nama `Rotating`.
 
 Buka **C#** _script_ tersebut dan ubah isi dari fungsi `Update()` sebagai berikut:
+
 ```c#
 void Update()
 {
-    Vector3 newEulerAngles = transform.eulerAngles;
-    newEulerAngles.z += 0.5f;
-
-    transform.eulerAngles = newEulerAngles;
+    transform.Rotate(new Vector3(0f, 0f, 0.5f));
 }
 ```
 
-Penjelasan singkat dari baris _program_ diatas, _program_ akan menyimpan nilai `eulerAngles` dari _component_ `transform` ke variabel sementara yang diberi nama `newEulerAngles`.
-Setelah itu, nilai `z` dari `newEulerAngles` sebelumnya akan ditambahkan sebesar `0.5` _float_.
-Dan Terakhir, nilai `newEulerAngles` yang sudah diubah tadi akan di-_set_ ke nilai `eulerAngles` dari _component_ `transform`.
+Penjelasan singkat dari baris _program_ diatas, _program_ akan memanggil fungsi `Rotate()` dari `transform`.
+Sehingga, nilai `Rotation` dari _component_ tersebut akan berubah sebesar `0`, `0`, `0.5`, atau dengan kata lain, nilai `Z` dari `Rotation` pada _component_ tersebut akan bertambah dengan seiring berjalannya waktu.
 
 > Sebagai catatan, `transform` merupakan _member variable_ yang memiliki [tipe data](https://en.wikipedia.org/wiki/Data_type) _class_ `Transform`.
 > Dalam sisi pemrograman, _class_ `Transform` merupakan _class_ yang merepresentasikan isi dan fungsi dari _component_ `Transform` yang ada pada _game object_.
@@ -211,7 +208,7 @@ Setelah selesai, simpan baris _program_ tersebut.
   ![Mencoba _component_ `Rotating` pada _game object_](./Images/rotating-component.png)
 
   > Pada tahap ini objek persegi yang baru saja dibuat akan berputar secara terus menerus.
-  > Hal ini bisa terjadi karena pada fungsi `Update()`, nilai dari [_euler angles_](https://en.wikipedia.org/wiki/Euler_angles) (atau `Rotation` pada **Inspector Window**) akan berubah secara terus menerus di setiap _frame_ sehingga menimbulkan kesan seolah-olah sedang berputar.
+  > Hal ini bisa terjadi karena pada fungsi `Update()`, nilai dari [_euler angles_](https://en.wikipedia.org/wiki/Euler_angles) (atau `Rotation` pada **Inspector Window**) pada _component_ `Transform` akan berubah secara terus menerus di setiap _frame_ sehingga menimbulkan kesan seolah-olah sedang berputar.
 
   > Sebagai tambahan, anda bisa juga menambahkan _component_ `Centerized`.
   > Sehingga selain berputar terus menerus, ketika di awal, objek juga akan secara otomatis terletak di tengah.

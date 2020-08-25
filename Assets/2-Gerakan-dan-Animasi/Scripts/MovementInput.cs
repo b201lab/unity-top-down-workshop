@@ -24,14 +24,14 @@ public class MovementInput : MonoBehaviour
     // Dapatkan nilai input dari keyboard
     float inputX = Input.GetAxisRaw("Horizontal");
     float inputY = Input.GetAxisRaw("Vertical");
-    
+
     // Gunakan nilai yang telah didapatkan untuk menggerakkan pemain
     //Input axis are normalized to ensure every possible movements are in the same speed
     Vector3 movement = new Vector3(inputX, inputY, 0f).normalized;
     mouseScreenToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     mouseToPlayer = (mouseScreenToWorld - transform.position);
     directionID = (int)(((Mathf.Atan2(mouseToPlayer.y, mouseToPlayer.x) * Mathf.Rad2Deg + 360)%360f + 22.5f)/ 45)%8;
-    
+
     // Atur animasi dan gerakkan pemain
     animator.SetInteger("directionIndex", directionID);
     rb.velocity = new Vector2(movement.x, movement.y) * speed;
