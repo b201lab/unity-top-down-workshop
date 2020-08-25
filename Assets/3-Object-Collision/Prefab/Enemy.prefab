@@ -92,7 +92,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1867942530553789621, guid: a6ac699766d63234d867dce54a763a9e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -164,5 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ef344b371a61040a35679c6c42f9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyBulletObject: {fileID: 7237872901262864553, guid: b04cbf1fe2d66a84e9cea95180270724,
+    type: 3}
   enemySpeed: 0
+  bulletSpawnDistance: 1
   hp: 8
