@@ -1,6 +1,8 @@
-# Gerakan dan Animasi
+# Input dan Gerakan
 
-Bab ini akan menjelaskan beberapa hal berikut:
+Pada bagian kedua dari modul ini, kita akan membahas mengenai interaksi pemain dengan game melalui _input_ yang diberikan oleh pemain.
+Serta bagaimana sistem akan merespon _input_ dari pemain tersebut, yang mana salah satunya adalah dengan menggerakkan objek yang dikendalikan oleh pemain.
+Selain soal _input_ dan gerakan, pada bagian ini kita juga akan menyinggung beberapa hal lain yang akan membantu pengembangan game ini dari sisi _input_ dan gerakan seperti soal _debug log_ dan _prefab_.
 
 1. Menggerakkan Objek
 2. Mengatur Animasi _Sprite_

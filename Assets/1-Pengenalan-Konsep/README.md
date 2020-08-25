@@ -33,13 +33,17 @@ Ketika _game_ berlangsung hanya ada satu _scene_ yang bisa aktif dan agar bisa m
 ### Membuat Scene Baru
 
 - Pembuatan _scene_ baru pada Unity dilakukan melalui tatap muka Project Window.
-  > Untuk percobaan kali ini, kita akan membuat _scene_ baru pada _folder_ `1-Pengenalan-Konsep/Scenes`. jadi pastikan **Project Window** sudah berada pada _folder_ tersebut.
+
+  > Secara umum, _asset_ yang berbentuk _scene_ diletakkan pada folder bernama `Scenes`.
+  > jadi pastikan **Project Window** sudah berada pada _folder_ tersebut.
+
 - Terdapat dua cara untuk menambahkan _scene_ baru, yakni dengan menekan tombol `+` pada bagian kiri atas lalu pilih `Scene` atau dengan klik kanan, lalu `Create`, dan pilih `Scene`.
 
   ![Membuat _scene_ baru dengan klik kanan](./Images/create-scene.png)
 
 - Beri nama untuk _scene_ yang akan dibuat.
 - Buka _scene_ baru yang telah dibuat dengan cara _double_ klik.
+
   > Pada tahap ini **Scene View**, **Game View**, dan **Hierarchy Window** akan berganti sesuai dengan isi dari _scene_ yang dibuka.
 
 ## Game Object
@@ -67,6 +71,8 @@ Terdapat dua cara untuk mengubah transformasi suatu _game object_, yakni sebagai
 1. Mengubah langsung pada **Scene View** menggunakan _tools_ yang tersedia pada _toolbar_ (sebelah kiri atas), seperti `Move Tool`, `Rotate Tool`, `Scale Tool`, dan lain sebagainya.
 2. Mengubah nilai dari komponen `Transform` secara langsung pada **Inspector Window**. (sebelumnya klik _game object_ pada **Scene View** atau **Hierarchy Window** untuk menampilkan detail komponen dari _game object_)
 
+> Informasi lebih lanjut mengenai Transformasi _game object_ pada Unity bisa dilihat [disini](https://docs.unity3d.com/Manual/Transforms.html).
+
 Sebagai contoh kita bisa mengubah transformasi dari _game object_ yang sebelumnya dibuat dengan mengubah nilai `Position` menjadi `(0, 0, 0)` dan `Scale` menjadi `(10, 10, 10)` pada **Inspector Window**.
 Hasilnya akan didapatkan objek lingkaran besar yang berada tepat di tengah-tengah _scene_.
 
@@ -83,14 +89,20 @@ Sebagai contoh, `Transform` merupakan salah satu _component_ yang merepresentasi
 ### Membuat Component Baru dengan C# Script
 
 - Pembuatan _component_ baru dengan **C#** _script_ dilakukan melalui tatap muka **Project Window**.
-  > Untuk percobaan kali ini, kita akan membuat _component_ dengan **C#** _script_ pada _folder_ `1-Pengenalan-Konsep/Scripts`. jadi pastikan **Project Window** sudah berada pada _folder_ tersebut.
+
+  > Secara umum, _asset_ yang berbentuk **C#** _script_ diletakkan pada folder bernama `Scripts`.
+  > jadi pastikan **Project Window** sudah berada pada _folder_ tersebut.
+
 - Terdapat dua cara untuk menambahkan **C#** _script_, yakni dengan menekan tombol `+` pada bagian kiri atas lalu pilih `C# Script` atau dengan klik kanan, lalu `Create`, dan pilih `C# Script`.
 
   ![Membuat **C#** _script_ baru dengan klik kanan](./Images/create-script.png)
 
 - Beri nama untuk _component_ yang akan dibuat.
+
   > Untuk percobaan kali ini, kita akan membuat _component_ dengan nama `Centerized` yang akan digunakan untuk membuat posisi _game object_ berada di tengah.
+
 - Buka **C#** _script_ yang telah dibuat dengan cara _double_ klik.
+
   > Pada tahap ini **Unity** akan membuka _text editor_ yang menampilkan **C#** _script_ dari component `Centerized`.
   > Jika **Visual Studio** tidak terinstall, maka bisa menggunakan _text editor_ apapun seperti **Notepad**.
 
@@ -136,6 +148,9 @@ Penjelasan singkat dari baris _program_ diatas, _program_ akan mengubah nilai `p
 `Vector3` sendiri merepresentasikan posisi _3D_ yang terdiri dari `x`, `y`, dan `z`, seperti pada nilai `Position` pada component `Transform` di Inspector Window.
 Sedangkan `0f` sendiri berarti nilai `0` dalam bentuk _float_ (pecahan).
 
+> Sebagai catatan, `transform` merupakan [_member variable_](https://en.wikipedia.org/wiki/Member_variable) dari _class_ `MonoBehaviour` yang merupakan [_parent class_](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)) dari _class_ `Centerized`.
+> Informasi lebih lanjut mengenai _class_ `MonoBehavior` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html).
+
 Setelah selesai, simpan baris _program_ tersebut.
 
 ### Menggunakan Component Centerized
@@ -146,13 +161,65 @@ Setelah selesai, simpan baris _program_ tersebut.
 
   ![Menambahkan _component_ `Centerized` pada _game object_](./Images/add-centerized-component.png)
 
-- Setelah _component_ ditambahkan, klik tombol `Play` pada Toolbar.
+- Setelah _component_ ditambahkan, klik tombol `Play` pada **Toolbar** untuk melihat hasilnya.
+
   > Pada tahap ini, tampilan akan terfokuskan pada **Game View**, dan objek lingkaran yang sebelumnya tidak berada di tengah akan secara otomatis terletak di tengah saat _game_ sedang berlangsung.
+
+  > Sebagai tambahan, anda bisa membuat beberapa objek lain dengan posisi acak dan menambahkan _component_ `Centerized`.
+  > Hasilnya, setelah di-_run_, keseluruhan objek yang memiliki _component_ `Centerized` akan secara otomatis terletak di tengah saat _game_ sedang berlangsung.
+
+## Order of Execution
+
+_Order of execution_ merupakan istilah yang merujuk pada urutan dari pemanggilan _event_ pada sistem **Unity**.
+Salah satu dari _event_ tersebut nantinya akan memanggil fungsi yang ada pada _component_ seperti `Start()` dan `Update()` yang sudah dijelaskan sebelumnya.
+Pada bagian ini kita akan membahas lebih lanjut mengenai bagaimana pengaruh _order of execution_ ini terhadap _looping_ dari suatu game, sehingga alur dari sistem bisa bekerja sesuai dengan yang diinginkan.
+
+> Informasi lebih lanjut mengenai _order of execution_ pada **Unity** bisa dilihat [disini](https://docs.unity3d.com/Manual/ExecutionOrder.html).
+
+### Membuat Component Rotating
+
+Pada percobaan kali ini, kita akan membuat _component_ baru yang akan digunakan untuk membuat objek selalu berputar selama game sedang berlangsung
+Untuk itu, pertama, buat **C#** _script_ baru dan beri nama `Rotating`.
+
+Buka **C#** _script_ tersebut dan ubah isi dari fungsi `Update()` sebagai berikut:
+```c#
+void Update()
+{
+    Vector3 newEulerAngles = transform.eulerAngles;
+    newEulerAngles.z += 0.5f;
+
+    transform.eulerAngles = newEulerAngles;
+}
+```
+
+Penjelasan singkat dari baris _program_ diatas, _program_ akan menyimpan nilai `eulerAngles` dari _component_ `transform` ke variabel sementara yang diberi nama `newEulerAngles`.
+Setelah itu, nilai `z` dari `newEulerAngles` sebelumnya akan ditambahkan sebesar `0.5` _float_.
+Dan Terakhir, nilai `newEulerAngles` yang sudah diubah tadi akan di-_set_ ke nilai `eulerAngles` dari _component_ `transform`.
+
+> Sebagai catatan, `transform` merupakan _member variable_ yang memiliki [tipe data](https://en.wikipedia.org/wiki/Data_type) _class_ `Transform`.
+> Dalam sisi pemrograman, _class_ `Transform` merupakan _class_ yang merepresentasikan isi dan fungsi dari _component_ `Transform` yang ada pada _game object_.
+> Informasi lebih lanjut mengenai _class_ `Transform` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/Transform.html).
+
+Setelah selesai, simpan baris _program_ tersebut.
+
+### Mencoba Component Rotating
+
+- Buat _game object_ baru dengan jenis `3D Object` -> `Cube` dan tambahkan _component_ `Rotating`.
+  > Anda boleh menghapus _game object_ lain yang sudah tidak digunakan.
+- Klik tombol `Play` untuk melihat hasilnya.
+
+  ![Mencoba _component_ `Rotating` pada _game object_](./Images/rotating-component.png)
+
+  > Pada tahap ini objek persegi yang baru saja dibuat akan berputar secara terus menerus.
+  > Hal ini bisa terjadi karena pada fungsi `Update()`, nilai dari [_euler angles_](https://en.wikipedia.org/wiki/Euler_angles) (atau `Rotation` pada **Inspector Window**) akan berubah secara terus menerus di setiap _frame_ sehingga menimbulkan kesan seolah-olah sedang berputar.
+
+  > Sebagai tambahan, anda bisa juga menambahkan _component_ `Centerized`.
+  > Sehingga selain berputar terus menerus, ketika di awal, objek juga akan secara otomatis terletak di tengah.
 
 ## Kesimpulan
 
 Dari bagian pertama ini kita telah mengenal konsep dasar pembuatan _game_ menggunakan **Unity**. Dari sini kita bisa membuat _game_ yang terdiri dari _scene_ dengan berbagai isi objek sesuai keinginan, serta mengatur setiap objek yang ada dengan _component_ yang bisa kita buat sendiri.
 
-Pada bagian selanjutnya kita akan membahas lebih lanjut mengenai manipulasi objek menggunakan _component_ yang dibuat sendiri, terutama soal mengatur gerakan dan animasi dari _game object_ tersebut, serta mengatur interaksi antara pemain dengan _game_ yang akan dibuat.
+Pada bagian selanjutnya kita akan membahas lebih lanjut mengenai manipulasi objek menggunakan _component_ yang dibuat sendiri, terutama soal mengatur gerakan dari _game object_ serta mengatur interaksi antara pemain dengan _game_ yang akan dibuat.
 
-[Lanjut Bagian Kedua, Gerakan dan Animasi](../2-Gerakan-dan-Animasi/README.md)
+[Lanjut Bagian Kedua, Input dan Gerakan](../2-Gerakan-dan-Animasi/README.md)
