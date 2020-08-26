@@ -45,4 +45,12 @@ public class MovementInput : MonoBehaviour
       spawnedPlayerBullet.GetComponent<BulletMovement>().bulletSpeed = bulletSpeed;
     }
   }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if(other.tag == "Enemy" || other.tag == "EnemyBullet")
+    {
+      // Debug.Break();
+    }
+  }
 }
