@@ -19,7 +19,7 @@ Berbeda dengan cara sebelumnya, untuk saat ini instalasi **Unity** diharuskan me
   > Informasi lebih lanjut mengenai spesifikasi minimum **Unity** bisa dilihat [disini](https://docs.unity3d.com/Manual/system-requirements.html).
 - Unduh **Unity Hub** pada halaman berikut **https://unity3d.com/get-unity/download**.
 
-  ![Mengunduh **Unity Hub**](./Images/download-unity-hub.png)
+  ![Mengunduh **Unity Hub**](./Modules/0-Setup/Images/download-unity-hub.png)
 
 - Buka _program_ yang sudah diunduh untuk melakukan instalasi **Unity Hub**.
 
@@ -29,13 +29,13 @@ Berbeda dengan cara sebelumnya, untuk saat ini instalasi **Unity** diharuskan me
 - Sebelum melakukan instalasi **Unity Editor**, anda akan diminta untuk mengaktifkan lisensi **Unity**.
 - Login menggunakan akun **Unity**, masuk menu `Preferences` (ikon gerigi), dan pada bagian `License Management` klik `Activate New License`.
 
-  ![Mengaktifkan lisensi **Unity**](./Images/activate-license.png)
+  ![Mengaktifkan lisensi **Unity**](./Modules/0-Setup/Images/activate-license.png)
 
 - Pilih `Unity Personal` jika sebelumnya anda belum memiliki lisensi `Unity Pro/Plus`.
 - Setelah selesai, kembali ke menu utama, dan pada bagian `Installs`, klik `Add`.
 - Pilih Unity dengan versi [_LTS_](https://en.wikipedia.org/wiki/Long-term_support) terbaru (**Unity 2019.4**) dan pada bagian _modules_ kosongkan semua.
 
-  ![Menambahkan versi baru **Unity**](./Images/add-version.png)
+  ![Menambahkan versi baru **Unity**](./Modules/0-Setup/Images/add-version.png)
 
   > _Modules_ bersifat opsional, kebanyakan digunakan untuk _development_ pada _platform_ yang berbeda. Jika dibutuhkan, _modules_ masih bisa ditambahkan setelah instalasi dilakukan.
 - Tunggu hingga instalasi selesai.
@@ -47,12 +47,12 @@ Berbeda dengan cara sebelumnya, untuk saat ini instalasi **Unity** diharuskan me
 - Buka **Unity Hub**, dan pada bagian `Projects`, klik `New`.
 - Pilih `2D` untuk `Templates`, `Project Name` dan `Location` bisa diisi bebas, kemudian klik **Create**.
 
-  ![Membuat project baru pada **Unity**](./Images/create-project.png)
+  ![Membuat project baru pada **Unity**](./Modules/0-Setup/Images/create-project.png)
 
 - Tunggu proses pembuatan _project_ **Unity** selesai.
 - Setelah muncul jendela **Unity Editor**, maka instalasi **Unity** sudah selesai dan siap untuk digunakan.
 
-  ![Tampilan Jendela **Unity Editor**](./Images/unity-editor.png)
+  ![Tampilan Jendela **Unity Editor**](./Modules/0-Setup/Images/unity-editor.png)
 
 ## Workshop Pembuatan Game
 
@@ -66,11 +66,11 @@ Nantinya selain mendapat bekal pembuatan _game engine_ **Unity**, peserta juga d
 - Sebelum memulai _workshop_, pastikan **Unity** sudah disiapkan dan anda sudah mengunduh _source code_ dari _project_ untuk keperluan _workshop_ pada halaman berikut **https://github.com/b201lab/unity-top-down-workshop**.
 - _Source code_ bisa diunduh menggunakan fungsi `clone` pada [**Git**](https://git-scm.com/) menggunakan alamat yang tertera atau diunduh langsung dalam bentuk **ZIP**.
 
-  ![Mengunduh source code](./Images/git-clone.png)
+  ![Mengunduh source code](./Modules/0-Setup/Images/git-clone.png)
 
 - Setelah selesai mengunduh, buka **Unity Hub**, dan pada bagian `Projects` klik `Add`.
 
-  ![Menambah _project_ baru](./Images/add-project.png)
+  ![Menambah _project_ baru](./Modules/0-Setup/Images/add-project.png)
 
 - Pilih lokasi _source code_ yang sebelumnya sudah diunduh.
   > Jika _source code_ diunduh dalam bentuk **ZIP**, pastikan anda sudah meng-_extract_-nya sebelum membukanya menggunakan Unity.
@@ -85,9 +85,8 @@ Kemudian _workshop_ akan dilanjutkan dengan pembuatan dari _game top down_ itu s
 
 Untuk rincian dari alur pembuatan _game top down_ menggunakan **Unity** sendiri adalah sebagai berikut:
 
-1. [Pengenalan Konsep](./Assets/1-Pengenalan-Konsep/README.md)
-2. [Gerakan dan Animasi](./Assets/2-Gerakan-dan-Animasi/README.md)
-3. [Object Collision](./Assets/3-Object-Collision/README.md)
-4. [Pathfinding](./Assets/4-Pathfinding/README.md)
-5. [Navigasi Scene](./Assets/5-Navigasi-Scene/README.md)
-6. [Game Deployment](./Assets/6-Game-Deployment/README.md)
+1. [Pengenalan Konsep](./Modules/1-Pengenalan-Konsep/README.md)
+2. [Input dan Gerakan](./Modules/2-Input-dan-Gerakan/README.md)
+3. [Spawn dan Collision](./Modules/3-Spawn-dan-Collision/README.md)
+4. [Navigasi Scene](./Modules/4-Navigasi-Scene/README.md)
+5. [Game Deployment](./Modules/5-Game-Deployment/README.md)
