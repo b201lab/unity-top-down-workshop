@@ -34,14 +34,14 @@ Ketika _game_ berlangsung hanya ada satu _scene_ yang bisa aktif dan agar bisa m
 
 - Pembuatan _scene_ baru pada Unity dilakukan melalui tatap muka Project Window.
 
-  > Secara umum, _asset_ yang berbentuk _scene_ diletakkan pada folder bernama `Scenes`.
+  > Secara umum, _asset_ yang berbentuk _scene_ diletakkan pada _folder_ bernama `Scenes`.
   > jadi pastikan **Project Window** sudah berada pada _folder_ tersebut.
 
 - Terdapat dua cara untuk menambahkan _scene_ baru, yakni dengan menekan tombol `+` pada bagian kiri atas lalu pilih `Scene` atau dengan klik kanan, lalu `Create`, dan pilih `Scene`.
 
   ![Membuat _scene_ baru dengan klik kanan](./Images/create-scene.png)
 
-- Beri nama untuk _scene_ yang akan dibuat.
+- Beri nama _scene_ yang dibuat dengan nama `Game`.
 - Buka _scene_ baru yang telah dibuat dengan cara _double_ klik.
 
   > Pada tahap ini **Scene View**, **Game View**, dan **Hierarchy Window** akan berganti sesuai dengan isi dari _scene_ yang dibuka.
@@ -57,11 +57,13 @@ Secara _default_, scene yang baru dibuat memiliki _game object_ `Main Camera` ya
 
 - Pembuatan _game object_ baru pada **Unity** dilakukan melalui tatap muka Hierarchy Window.
 - Sama seperti pembuatan _scene_ baru, terdapat dua cara untuk menambahkan _game object_ baru, yakni dengan menekan tombol `+` pada bagian kiri atas lalu pilih jenis _game object_ yang diinginkan atau dengan klik kanan lalu pilih jenis _game object_ yang diinginkan.
-- Sebagai contoh kita bisa memilih _game object_ dengan jenis `3D Object` -> `Sphere`. Maka akan muncul object lingkaran pada **Scene View** maupun **Game View**.
+- Untuk percobaan kali ini, kita akan membuat _game object_ dengan jenis `3D Object` -> `Cube`. Setelah itu akan muncul objek persegi pada **Scene View** maupun **Game View**.
 
   ![Membuat _game object_ baru dengan menekan tombol `+`](./Images/create-game-object.png)
 
   > Walaupun yang dibuat adalah _game_ jenis _2D_, **Unity** tetap memperlakukan _game_ tersebut sebagai _game 3D_ dengan perspektif kamera _2D_. Hal ini bisa dilihat dengan mematikan _toggle_ `2D` pada **Scene View**.
+
+- Beri nama _game object_ yang baru dibuat dengan nama `Player`.
 
 ### Transformasi Game Object
 
@@ -73,8 +75,8 @@ Terdapat dua cara untuk mengubah transformasi suatu _game object_, yakni sebagai
 
 > Informasi lebih lanjut mengenai Transformasi _game object_ pada Unity bisa dilihat [disini](https://docs.unity3d.com/Manual/Transforms.html).
 
-Sebagai contoh kita bisa mengubah transformasi dari _game object_ yang sebelumnya dibuat dengan mengubah nilai `Position` menjadi `(0, 0, 0)` dan `Scale` menjadi `(10, 10, 10)` pada **Inspector Window**.
-Hasilnya akan didapatkan objek lingkaran besar yang berada tepat di tengah-tengah _scene_.
+Sebagai contoh kita bisa mengubah transformasi dari _game object_ yang sebelumnya dibuat dengan mengubah nilai `Position` menjadi `(0, 0, 0)` dan `Scale` menjadi `(5, 5, 5)` pada **Inspector Window**.
+Hasilnya akan didapatkan objek persegi besar yang berada tepat di tengah-tengah _scene_.
 
 ![Mengubah transformasi _game object_](./Images/object-transform.png)
 
@@ -90,23 +92,23 @@ Sebagai contoh, `Transform` merupakan salah satu _component_ yang merepresentasi
 
 - Pembuatan _component_ baru dengan **C#** _script_ dilakukan melalui tatap muka **Project Window**.
 
-  > Secara umum, _asset_ yang berbentuk **C#** _script_ diletakkan pada folder bernama `Scripts`.
+  > Secara umum, _asset_ yang berbentuk **C#** _script_ diletakkan pada _folder_ bernama `Scripts`.
   > jadi pastikan **Project Window** sudah berada pada _folder_ tersebut.
 
 - Terdapat dua cara untuk menambahkan **C#** _script_, yakni dengan menekan tombol `+` pada bagian kiri atas lalu pilih `C# Script` atau dengan klik kanan, lalu `Create`, dan pilih `C# Script`.
 
   ![Membuat **C#** _script_ baru dengan klik kanan](./Images/create-script.png)
 
-- Beri nama untuk _component_ yang akan dibuat.
+- Beri nama _component_ yang baru dibuat dengan nama `RandomStart`.
 
-  > Untuk percobaan kali ini, kita akan membuat _component_ dengan nama `Centerized` yang akan digunakan untuk membuat posisi _game object_ berada di tengah.
+  > Untuk percobaan kali ini, kita akan membuat _component_ dengan nama `Random Start` yang akan digunakan untuk membuat posisi _game object_ terletak secara acak di awal.
 
 - Buka **C#** _script_ yang telah dibuat dengan cara _double_ klik.
 
-  > Pada tahap ini **Unity** akan membuka _text editor_ yang menampilkan **C#** _script_ dari component `Centerized`.
+  > Pada tahap ini **Unity** akan membuka _text editor_ yang menampilkan **C#** _script_ dari component `Random Start`.
   > Jika **Visual Studio** tidak terinstall, maka bisa menggunakan _text editor_ apapun seperti **Notepad**.
 
-### Mem-Program Component Centerized
+### Mem-Program Component Random Start
 
 Secara _default_, isi dari **C#** _script_ yang baru dibuat adalah sebagai berikut:
 
@@ -115,7 +117,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Centerized : MonoBehaviour
+public class RandomStart : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -132,7 +134,7 @@ public class Centerized : MonoBehaviour
 ```
 
 Inti dari _component_ yang dibuat menggunakan **C#** _script_ terletak pada fungsi `Start()` dan `Update()`.
-Sesuai dengan penjelasan pada _comment line_ (baris program dengan awalan `//` yang berfungsi sebagai keterangan), fungsi `Start()` akan digunakan untuk melakukan eksekusi pertama di awal, sedangkan fungsi `Update()` akan digunakan untuk melakukan eksekusi yang dipanggil secara terus menerus di setiap _frame_.
+Sesuai dengan penjelasan pada _comment line_ (baris _program_ dengan awalan `//` yang berfungsi sebagai keterangan), fungsi `Start()` akan digunakan untuk melakukan eksekusi pertama di awal, sedangkan fungsi `Update()` akan digunakan untuk melakukan eksekusi yang dipanggil secara terus menerus di setiap _frame_.
 Pada percobaan kali ini, kita akan fokus pada fungsi `Start()` saja karena proses untuk membuat _game object_ berada di tengah cukup dilakukan sekali pada eksekusi pertama di awal.
 
 Ubah isi dari fungsi `Start()` sebagai berikut:
@@ -140,33 +142,37 @@ Ubah isi dari fungsi `Start()` sebagai berikut:
 ```C#
 void Start()
 {
-    transform.position = new Vector3(0f, 0f, 0f);
+    Vector3 position = transform.position;
+    position.x = Random.Range(-10, 10);
+
+    transform.position = position;
 }
 ```
 
-Penjelasan singkat dari baris _program_ diatas, _program_ akan mengubah nilai `position` dari `transform` menjadi `new Vector3(0f, 0f, 0f)`.
+Penjelasan singkat dari baris _program_ diatas, _program_ akan menyimpan nilai `transform.position` ke variabel sementara `position` yang berupa `Vector3`.
 `Vector3` sendiri merepresentasikan posisi _3D_ yang terdiri dari `x`, `y`, dan `z`, seperti pada nilai `Position` pada _component_ `Transform` di **Inspector Window**.
-Sedangkan `0f` sendiri berarti nilai `0` dalam bentuk _float_ (pecahan).
+Kemudian _program_ akan mengubah nilai `x` dari `position` dengan angka acak dari kisaran `-10` hingga `10` dan menge-_set_-nya kembali ke variabel `transform.position`.
 
-> Sebagai catatan, `transform` merupakan [_member variable_](https://en.wikipedia.org/wiki/Member_variable) dari _class_ `MonoBehaviour` yang merupakan [_parent class_](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)) dari _class_ `Centerized`.
-> Informasi lebih lanjut mengenai _class_ `MonoBehavior` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html).
+> Sebagai catatan, `transform` merupakan [_member variable_](https://en.wikipedia.org/wiki/Member_variable) yang memiliki [tipe data](https://en.wikipedia.org/wiki/Data_type) _class_ `Transform`.
+> Dalam sisi pemrograman, _class_ `Transform` merupakan _class_ yang merepresentasikan isi dan fungsi dari _component_ `Transform` yang ada pada _game object_.
+> Informasi lebih lanjut mengenai _class_ `Transform` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/Transform.html).
 
 Setelah selesai, simpan baris _program_ tersebut.
 
-### Menggunakan Component Centerized
+### Menggunakan Component RandomStart
 
-- Ubah posisi objek lingkaran yang telah dibuat sebelumnya sehingga tidak berada di tengah.
-- Klik objek tersebut dan Pada **Inspector Window**, klik `Add Component`.
-- Cari _component_ yang bernama `Centerized`, dan kemudian tambahkan.
+- Buka _scene_ `Game` yang sebelumnya sudah dibuat.
+- Klik objek `Player` dan Pada **Inspector Window**, klik `Add Component`.
+- Cari _component_ yang bernama `Random Start`, dan kemudian tambahkan.
 
-  ![Menambahkan _component_ `Centerized` pada _game object_](./Images/add-centerized-component.png)
+  ![Menambahkan _component_ `Random Start` pada _game object_](./Images/add-component.png)
 
 - Setelah _component_ ditambahkan, klik tombol `Play` pada **Toolbar** untuk melihat hasilnya.
 
-  > Pada tahap ini, tampilan akan terfokuskan pada **Game View**, dan objek lingkaran yang sebelumnya tidak berada di tengah akan secara otomatis terletak di tengah saat _game_ sedang berlangsung.
+  > Pada tahap ini, tampilan akan terfokuskan pada **Game View**, dan objek `Player` akan secara otomatis berpindah tempat pada posisi yang berbeda saat _game_ sedang berlangsung.
 
-  > Sebagai tambahan, anda bisa membuat beberapa objek lain dengan posisi acak dan menambahkan _component_ `Centerized`.
-  > Hasilnya, setelah di-_run_, keseluruhan objek yang memiliki _component_ `Centerized` akan secara otomatis terletak di tengah saat _game_ sedang berlangsung.
+  > Sebagai tambahan, jika di-_play_ berulang kali, posisi awal dari objek `Player` akan berbeda dengan posisi yang didapatkan pada _game_ yang berlangsung sebelumnya.
+  > Hal ini terjadi karena fungsi `Random.Range()` akan memilih angka acak sesuai dengan parameter yang diberikan.
 
 ## Order of Execution
 
@@ -176,42 +182,39 @@ Pada bagian ini kita akan membahas lebih lanjut mengenai bagaimana pengaruh _ord
 
 > Informasi lebih lanjut mengenai _order of execution_ pada **Unity** bisa dilihat [disini](https://docs.unity3d.com/Manual/ExecutionOrder.html).
 
-### Component Rotating
+### Component Up Movement
 
-Pada percobaan kali ini, kita akan membuat _component_ baru yang akan digunakan untuk membuat objek selalu berputar selama game sedang berlangsung
-Untuk itu, pertama, buat **C#** _script_ baru dan beri nama `Rotating`.
+Pada percobaan kali ini, kita akan membuat _component_ baru yang akan digunakan untuk membuat objek bergerak ke atas selama game sedang berlangsung
+Untuk itu, pertama, buat **C#** _script_ baru dan beri nama `Up Movement`.
 
 Buka **C#** _script_ tersebut dan ubah isi dari fungsi `Update()` sebagai berikut:
 
 ```c#
 void Update()
 {
-    transform.Rotate(new Vector3(0f, 0f, 0.5f));
+    Vector3 translation = new Vector3(0, 5, 0);
+    transform.Translate(translation * Time.deltaTime);
 }
 ```
 
-Penjelasan singkat dari baris _program_ diatas, _program_ akan memanggil fungsi `Rotate()` dari `transform`.
-Sehingga, nilai `Rotation` dari _component_ tersebut akan berubah sebesar `0`, `0`, `0.5`, atau dengan kata lain, nilai `Z` dari `Rotation` pada _component_ tersebut akan bertambah dengan seiring berjalannya waktu.
+Penjelasan singkat dari baris _program_ diatas, _program_ akan membuat variabel `Vector3` baru dengan nilai `0`, `5`, `0`.
+Kemudian _program_ akan memanggil fungsi `Translate()` dari `transform` dengan parameter yang berupa variabel yang sudah dibuat sebelumnya dikalikan dengan `Time.deltaTime`.
+Maksud dari fungsi `Translate()` sendiri adalah untuk mentranslasi (menggerakkan) objek ke arah vektor yang sudah dibuat sebelumnya.
 
-> Sebagai catatan, `transform` merupakan _member variable_ yang memiliki [tipe data](https://en.wikipedia.org/wiki/Data_type) _class_ `Transform`.
-> Dalam sisi pemrograman, _class_ `Transform` merupakan _class_ yang merepresentasikan isi dan fungsi dari _component_ `Transform` yang ada pada _game object_.
-> Informasi lebih lanjut mengenai _class_ `Transform` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/Transform.html).
+> Sebagai catatan, `Time.deltaTime` merupakan nilai selisih waktu antara frame sebelum dan frame sekarang.
+> Perkalian dengan `Time.deltaTime` pada **Unity** umumnya digunakan untuk menghindari adanya gerakan yang patah patah ketika game sedang berlangsung.
+> Informasi lebih lanjut mengenai perlunya `Time.deltaTime` bisa dilihat [disini](https://answers.unity.com/questions/296336/timedeltatime.html).
 
 Setelah selesai, simpan baris _program_ tersebut.
 
-### Mencoba Component Rotating
+### Menggunakan Component Up Movement
 
-- Buat _game object_ baru dengan jenis `3D Object` -> `Cube` dan tambahkan _component_ `Rotating`.
-  > Anda boleh menghapus _game object_ lain yang sudah tidak digunakan.
+- Buka _scene_ `Game` yang sebelumnya sudah dibuat.
+- Tambahkan _component_ `Up Movement` pada objek `Player`.
 - Klik tombol `Play` untuk melihat hasilnya.
 
-  ![Mencoba _component_ `Rotating` pada _game object_](./Images/rotating-component.png)
-
-  > Pada tahap ini objek persegi yang baru saja dibuat akan berputar secara terus menerus.
-  > Hal ini bisa terjadi karena pada fungsi `Update()`, nilai dari [_euler angles_](https://en.wikipedia.org/wiki/Euler_angles) (atau `Rotation` pada **Inspector Window**) pada _component_ `Transform` akan berubah secara terus menerus di setiap _frame_ sehingga menimbulkan kesan seolah-olah sedang berputar.
-
-  > Sebagai tambahan, anda bisa juga menambahkan _component_ `Centerized`.
-  > Sehingga selain berputar terus menerus, ketika di awal, objek juga akan secara otomatis terletak di tengah.
+  > Pada tahap ini, objek `Player` akan bergerak ke atas.
+  > Hal ini bisa terjadi karena pada fungsi `Update()`, transformasi dari objek akan dilakukan translasi secara terus menerus di setiap _frame_ sehingga menimbulkan kesan seolah-olah sedang bergerak ke atas.
 
 ## Kesimpulan
 
