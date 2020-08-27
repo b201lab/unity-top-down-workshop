@@ -116,12 +116,12 @@ Buat **C#** _script_ baru dan beri nama `RotationInput`, kemudian buka **C#** _s
 ```C#
 void Update()
 {
-  Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-  Vector3 mouseDirection = mousePosition - transform.position;
+    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    Vector3 mouseDirection = mousePosition - transform.position;
 
-  float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+    float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
 
-  transform.eulerAngles = new Vector3(0, 0, angle);
+    transform.eulerAngles = new Vector3(0, 0, angle);
 }
 ```
 
@@ -167,7 +167,7 @@ Walaupun awalnya **Unity** fokus pada pengembangan _3D_, tetapi grafik _2D_ seca
 
   ![Menambahkan _sprite_ pada _game object_](./Images/add-sprite.png)
 
-  > Pada tahap ini, objek akan berfungsi sama seperti sebelumnya, hanya saja dengan tampilan yang lebih menarik karena alih alih menggunakan model _3D_ yang tampak seperti persegi polos, disini kita menggunakan grafik _2D_ yang lebih sesuai denga _game_ yang akan kita buat.
+  > Pada tahap ini, objek akan berfungsi sama seperti sebelumnya, hanya saja dengan tampilan yang lebih menarik karena alih-alih menggunakan model _3D_ yang tampak seperti persegi polos, disini kita menggunakan grafik _2D_ yang lebih sesuai denga _game_ yang akan kita buat.
 
 ## Mengatur Sprite Untuk Rotasi
 
@@ -184,7 +184,7 @@ Jika kita klik tombol panah lingkaran maka akan terlihat isi dari _spritesheet_ 
 > Untuk menjadikan suatu grafik sebagai _spritesheet_ dan membaginya menjadi beberapa _sprite_ maka dibutuhkan cara tersendiri menggunakan **Sprite Editor**.
 > Informasi lebih lanjut mengenai penggunaan **Sprite Editor** bisa dilihat [disini](https://docs.unity3d.com/Manual/SpriteEditor.html).
 
-Masalah dari _program_ sebelumnya adalah alih alih mengganti _sprite_ untuk menampilkan arah hadap dari karakter _player_, _program_ malah merubah rotasi dari keseluruhan _sprite_.
+Masalah dari _program_ sebelumnya adalah alih-alih mengganti _sprite_ untuk menampilkan arah hadap dari karakter _player_, _program_ malah merubah rotasi dari keseluruhan _sprite_.
 Untuk itu disini kita akan mengatasi masalah itu dengan _component_ `Sprite Rotation` yang sudah ada pada _asset_ dan siap untuk digunakan.
 
 ### Menggunakan Component Sprite Rotation
@@ -213,7 +213,7 @@ Untuk itu disini kita akan mengatasi masalah itu dengan _component_ `Sprite Rota
 ### Menghubungkan Component Sprite Rotation dengan Rotation Input
 
 Sebelumnya kita sudah memahami kegunaan dari _component_ `Sprite Rotation`.
-Kali ini kita akan menghubungkannya dengan _component_ `Rotation Input` sehingga alih alih mengubah rotasi dari _component_ Transform, _component_ `Rotation Input` akan mengubah nilai `Rotation` dari _component_ `Sprite Rotation`.
+Kali ini kita akan menghubungkannya dengan _component_ `Rotation Input` sehingga alih-alih mengubah rotasi dari _component_ Transform, _component_ `Rotation Input` akan mengubah nilai `Rotation` dari _component_ `Sprite Rotation`.
 
 Buka kembali **C#** _script_ dari _component_ `Rotation Input` dan ubah sebagai berikut:
 
@@ -227,13 +227,13 @@ void Start()
 
 void Update()
 {
-  ...
+    ...
 
-  // transform.eulerAngles = new Vector3(0, 0, angle);
+    // transform.eulerAngles = new Vector3(0, 0, angle);
 
-  if (spriteRotation != null) {
-    spriteRotation.rotation = angle;
-  }
+    if (spriteRotation != null) {
+        spriteRotation.rotation = angle;
+    }
 }
 ```
 
@@ -244,7 +244,7 @@ Ketika _update_, _program_ akan mengecek jika _component_ `Sprite Rotation` ada 
 > _Method_ ini memiliki kegunaan untuk mengambil referensi _class_ dari _component_ yang ada pada suatu _game object_.
 > Informasi lebih lanjut dari _method_ `GetComponent<T>()` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/Component.GetComponent.html).
 
-Setelah selesai, simpan baris program tersebut dan coba jalankan kembali _game_ untuk melihat hasilnya.
+Setelah selesai, simpan baris _program_ tersebut dan coba jalankan kembali _game_ untuk melihat hasilnya.
 Pada tahap ini, ketika _mouse_ digerakkan, _sprite_ dari objek `Player` akan berubah menghadap ke arah _mouse_ sesuai dengan perilaku `SpriteRotation` dan `RotationInput` yang ada sebelumnya.
 
 > Pastikan _component_ `RotationInput` sudah di-_set_ kembali sebagai _enable_ agar _component_ bekerja.

@@ -6,21 +6,27 @@ public class MovementInput : MonoBehaviour
 {
     public float speed = 1;
 
+    Rigidbody2D rigidbody2d;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-      float inputX = Input.GetAxisRaw("Horizontal");
-      float inputY = Input.GetAxisRaw("Vertical");
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
 
-      Vector3 translation = new Vector3(inputX, inputY, 0);
-      translation.Normalize();
+        Vector2 translation = new Vector2(inputX, inputY);
+        translation.Normalize();
 
-      transform.Translate(translation * Time.deltaTime * speed);
+        // transform.Translate(translation * Time.deltaTime * speed);
+
+        if (rigidbody2d != null) {
+            rigidbody2d.velocity = translation * Time.deltaTime * speed;
+        }
     }
 }

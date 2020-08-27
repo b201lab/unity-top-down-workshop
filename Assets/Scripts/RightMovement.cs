@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpMovement : MonoBehaviour
+public class RightMovement : MonoBehaviour
 {
     public float speed = 1;
     Rigidbody2D rigidbody2d;
@@ -21,7 +21,7 @@ public class UpMovement : MonoBehaviour
 
         // transform.Translate(translation * Time.deltaTime);
         if (rigidbody2d != null) {
-            rigidbody2d.velocity = Vector2.up * Time.deltaTime * speed;
+            rigidbody2d.velocity = transform.right * Time.deltaTime * speed;
         }
     }
 }
