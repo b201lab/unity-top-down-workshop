@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyOnContact : MonoBehaviour
 {
     public string contactTag;
+    public int bonusScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class DestroyOnContact : MonoBehaviour
     {
         if (other.tag == contactTag)
         {
+            Score.score += bonusScore;
             Destroy(gameObject);
         }
     }

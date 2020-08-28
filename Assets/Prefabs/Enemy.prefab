@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 583530916622118798}
   - component: {fileID: 583530916622118797}
   - component: {fileID: 583530916622118796}
-  - component: {fileID: 2945719840202414520}
   - component: {fileID: 5319545424530545314}
   - component: {fileID: -830294918877115495}
   - component: {fileID: -6383852294251862224}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 3012246849969815766}
   - component: {fileID: 8667072229323352282}
   - component: {fileID: 5498293497457512936}
+  - component: {fileID: 3981408504432271234}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -114,18 +114,6 @@ MonoBehaviour:
   - {fileID: 8273598715916126338, guid: 8eaa9d9e72224cf498fb09387763f213, type: 3}
   startDirection: -45
   rotation: 0
---- !u!114 &2945719840202414520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583530916622118835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b52b85bdc7b494f9545a9ca30d5ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5319545424530545314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactTag: Player
+  bonusScore: 0
 --- !u!61 &3012246849969815766
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -238,3 +227,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactTag: PlayerBullet
+  bonusScore: 50
+--- !u!114 &3981408504432271234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583530916622118835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1abfbe28a99e6479f55daefcea780b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

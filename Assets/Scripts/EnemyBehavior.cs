@@ -13,32 +13,35 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start()
     {
-        time = shootInterval / 2;
+        time = shootInterval;
         player = GameObject.Find("Player");
         spriteRotation = GetComponent<SpriteRotation>();
     }
 
     void Update()
     {
+        float angle = 90;
         if (player != null) {
             Vector3 direction = player.transform.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        }
 
-            if (spriteRotation != null) {
-                spriteRotation.rotation = angle;
-            }
+        if (spriteRotation != null) {
+            spriteRotation.rotation = angle;
+        }
 
-            time += Time.deltaTime;
-            if (time > shootInterval) {
-                time -= shootInterval;
+        if (player != null) {
+          time += Time.deltaTime;
+          if (time > shootInterval) {
+              time -= shootInterval;
 
-                if (bullet != null) {
-                    Vector3 eulerAngles = transform.eulerAngles;
-                    eulerAngles.z = angle;
+              if (bullet != null) {
+                  Vector3 eulerAngles = transform.eulerAngles;
+                  eulerAngles.z = angle;
 
-                    Instantiate(bullet, transform.position, Quaternion.Euler(eulerAngles));
-                }
-            }
+                  Instantiate(bullet, transform.position, Quaternion.Euler(eulerAngles));
+              }
+          }
         }
     }
 }
