@@ -23,7 +23,7 @@ public class DestroyOnContact : MonoBehaviour
     {
         if (other.tag == contactTag)
         {
-            Score.score += bonusScore;
+            ScoreManager.score += bonusScore;
             Destroy(gameObject);
         }
     }

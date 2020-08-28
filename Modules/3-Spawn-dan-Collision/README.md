@@ -54,24 +54,25 @@ Di **Unity** sendiri _object spawning_ bisa dilakukan dengan cara memanggil _met
 Pada percobaan kali ini, kita akan membuat _component_ baru yang akan digunakan untuk melakukan _spawning_ dari suatu objek dalam _interval_ tertentu.
 Untuk itu, pertama, buat **C#** _script_ baru dengan nama `Spawner`.
 
-Buka **C#** _script_ tersebut dan ubah sebagai berikut:
+Buka **C#** _script_ tersebut dan ubah isi dari _class_ `Spawner` sebagai berikut:
 
 ```c#
-public GameObject prefab;
-public float spawnInterval = 1;
-
-float time = 0;
-
-...
-
-void Update()
+public class Spawner : MonoBehaviour
 {
-    time += Time.deltaTime;
-    if (time >= spawnInterval) {
-        time -= spawnInterval;
+    public GameObject prefab;
+    public float spawnInterval = 1;
 
-        if (prefab != null) {
-            Instantiate(prefab, transform.position, transform.rotation);
+    float time = 0;
+
+    void Update()
+    {
+        time += Time.deltaTime;
+        if (time >= spawnInterval) {
+            time -= spawnInterval;
+
+            if (prefab != null) {
+                Instantiate(prefab, transform.position, transform.rotation);
+            }
         }
     }
 }
@@ -86,6 +87,10 @@ Kemudian _program_ akan menge-_check_ jika variabel `prefab` ada (kembali untuk 
 
 - Buka _scene_ `Game` yang sebelumnya sudah dibuat.
 - Buat _game object_ baru dengan bentuk _empty_ (`Create Empty`) dan beri nama `Enemy Spawner`.
+- Posisikan _game object_ tersebut ke bagian paling bawah dari _scene_, diluar tampilan _viewport_.
+
+  ![Memposisikan _game object_ `Enemy Spawner`](./Images/put-spawner.png)
+
 - Tambahkan _component_ `Spawner` yang sebelumnya sudah dibuat.
   Isi `Prefab` dengan _prefab_ dari `Enemy`, sedangakn `Spawn Interval` isi dengan nilai bebas.
 
@@ -116,32 +121,35 @@ Karena _game_ yang kita buat merupakan _game_ _2D_, disini kita akan menggunakan
 Sebelumnya kita sudah membuat _component_ `Movement Input` dan `Up Movement` yang digunakan untuk menggerakkan objek dengan mengubah transformasi.
 Kali ini kita akan mengubah isi dari kedua _component_ tersebut sehingga alih-alih menggunakan transformasi sederhana, pergerakan dari _game object_ akan dipengaruhi oleh _physics_ untuk mendapatkan hasil yang lebih baik.
 
-Buka **C#** _script_ dari _component_ `Movement Input` dan ubah sebagai berikut:
+Buka **C#** _script_ dari _component_ `Movement Input` dan ubah isi dari _class_ `MovementInput` sebagai berikut:
 
 ```c#
-...
-
-Rigidbody2D rigidbody2d;
-
-void Start()
-{
-    rigidbody2d = GetComponent<Rigidbody2D>();
-}
-
-// void Update()
-void FixedUpdate()
+public class MovementInput : MonoBehaviour
 {
     ...
 
-    // Vector3 translation = new Vector3(inputX, inputY, 0);
-    Vector2 translation = new Vector2(inputX, inputY);
+    Rigidbody2D rigidbody2d;
 
-    ...
+    void Start()
+    {
+        rigidbody2d = GetComponent<Rigidbody2D>();
+    }
 
-    // transform.Translate(translation * Time.deltaTime * speed);
+    // void Update()
+    void FixedUpdate()
+    {
+        ...
 
-    if (rigidbody2d != null) {
-        rigidbody2d.velocity = translation * Time.deltaTime * speed;
+        // Vector3 translation = new Vector3(inputX, inputY, 0);
+        Vector2 translation = new Vector2(inputX, inputY);
+
+        ...
+
+        // transform.Translate(translation * Time.deltaTime * speed);
+
+        if (rigidbody2d != null) {
+            rigidbody2d.velocity = translation * Time.deltaTime * speed;
+        }
     }
 }
 ```
@@ -152,25 +160,28 @@ Kemudian kita harus mengganti bentuk dari variabel `translation` menjadi `Vector
 Dan terakhir, alih-alih melakukan translasi pada _component_ `Transform`, program akan mengubah nilai `velocity` dari `rigidbody2d` menggunakan perhitungan yang sama.
 
 Setelah selesai, simpan baris _program_ tersebut.
-Kemudian buka **C#** _script_ dari _component_ `Up Movement` dan ubah sebagai berikut:
+Kemudian buka **C#** _script_ dari _component_ `Up Movement` dan ubah isi dari _class_ `UpMovement` sebagai berikut:
 
 ``` c#
-public float speed = 1;
-Rigidbody2D rigidbody2d;
-
-void Start()
+public class UpMovement : MonoBehaviour
 {
-  rigidbody2d = GetComponent<Rigidbody2D>();
-}
+    public float speed = 1;
+    Rigidbody2D rigidbody2d;
 
-// void Update()
-void FixedUpdate()
-{
-    // Vector3 translation = new Vector3(0, 5, 0);
-    // transform.Translate(translation * Time.deltaTime);
+    void Start()
+    {
+      rigidbody2d = GetComponent<Rigidbody2D>();
+    }
 
-    if (rigidbody2d != null) {
-        rigidbody2d.velocity = Vector2.up * Time.deltaTime * speed;
+    // void Update()
+    void FixedUpdate()
+    {
+        // Vector3 translation = new Vector3(0, 5, 0);
+        // transform.Translate(translation * Time.deltaTime);
+
+        if (rigidbody2d != null) {
+            rigidbody2d.velocity = Vector2.up * Time.deltaTime * speed;
+        }
     }
 }
 ```
@@ -244,15 +255,16 @@ Untuk itu, pertama, buat **C#** _script_ baru dengan nama `DestroyOnContact`.
 Buka **C#** _script_ tersebut dan ubah isi dari _class_ `DestroyOnContact` sebagai berikut:
 
 ```c#
-public string contactTag;
-
-...
-
-void OnTriggerEnter2D(Collider2D other)
+public class DestroyOnContact : MonoBehaviour
 {
-    if (other.tag == contactTag)
+    public string contactTag;
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        if (other.tag == contactTag)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 ```
@@ -260,7 +272,7 @@ void OnTriggerEnter2D(Collider2D other)
 Penjelasan singkat dari baris program diatas, fungsi `OnTriggerEnter2D()` akan dipanggil jika suatu _collider_ bersentuhan dengan _collider_ yang lain.
 Dan jika objek dari _collider_ tersebut memiliki _tag_ seperti yang ditentukan di `contactTag`, maka _program_ akan menghapus _game object_ itu sendiri.
 
-> Sebagai catatan, `OnTriggerEnter2D()` merupakan salah satu bentu fungsi [_event_ ](https://en.wikipedia.org/wiki/Event_(computing)) yang ada pada _class_ `MonoBehaviour`, sama seperti fungsi `Start()`, `Update()`, dan lain sebagainya.
+> Sebagai catatan, `OnTriggerEnter2D()` merupakan salah satu bentuk fungsi [_event_ ](https://en.wikipedia.org/wiki/Event_(computing)) yang ada pada _class_ `MonoBehaviour`, sama seperti fungsi `Start()`, `Update()`, dan lain sebagainya.
 > Informasi lebih lanjut mengenai fungsi _event_ yang ada pada `MonoBehavior` bisa dilihat [disini](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html).
 
 ### Menggunakan Component Destroy On Contact

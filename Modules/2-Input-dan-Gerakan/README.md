@@ -78,7 +78,7 @@ Oleh karena itu, **Unity** mengenal sebuah istilah yang bernama _public property
 Secara umum, [_property_](https://en.wikipedia.org/wiki/Property_(programming)) sendiri digunakan untuk mendefiniskan variabel yang dimiliki oleh suatu _class_.
 Dengan menjadikan suatu _property_ sebagai _public_, maka nilai dari _property_ tersebut bisa diubah secara langsung melalui **Inspector Window** tanpa perlu mengubahnya melalui **C#** _script_.
 
-Buka kembali **C#** _script_ dari _component_ `Movement Input` dan ubah sebagai berikut:
+Buka kembali **C#** _script_ dari _component_ `Movement Input` dan ubah isi dari _class_ `MovementInput` sebagai berikut:
 
 ```c#
 public class MovementInput : MonoBehaviour
@@ -191,7 +191,8 @@ Untuk itu disini kita akan mengatasi masalah itu dengan _component_ `Sprite Rota
 
 - `Sprite Rotation` merupakan _component_ yang berfungsi mengubah tampilan _sprite_ dari _game object_ sesuai dengan nilai rotasi yang diberikan.
 
-  > `Sprite Rotation` merupakan _component_ yang sudah jadi, detail dari cara kerja _component_ tersebut bisa dilihat sendiri pada **C#** _script_ `SpriteRotation`.
+  > Sebagai catatan, untuk mempersingkat waktu, _component_ `Sprite Rotation` yang akan digunakan pada tahap ini sebelumnya sudah dibuat dan siap untuk digunakan.
+  > Detail dari cara kerja _component_ tersebut tidak akan dibahas disini, namun bisa ditanyakan di lain waktu.
 
 - Buka _scene_ `Game` dan pada _game object_ `Player`, tambahkan _component_ `Sprite Rotation`.
 - Pada **Insepctor Window** Atur `Size` dari `Sprites` sebanyak `8` dan isi keseluruhan _element_ dengan _sprite_ `Player` dari `Player_0` sampai `Player_7` serta atur `Start Direction` menjadi `-45`.
@@ -215,24 +216,27 @@ Untuk itu disini kita akan mengatasi masalah itu dengan _component_ `Sprite Rota
 Sebelumnya kita sudah memahami kegunaan dari _component_ `Sprite Rotation`.
 Kali ini kita akan menghubungkannya dengan _component_ `Rotation Input` sehingga alih-alih mengubah rotasi dari _component_ Transform, _component_ `Rotation Input` akan mengubah nilai `Rotation` dari _component_ `Sprite Rotation`.
 
-Buka kembali **C#** _script_ dari _component_ `Rotation Input` dan ubah sebagai berikut:
+Buka kembali **C#** _script_ dari _component_ `Rotation Input` dan ubah isi dari _class_ `Rotation Input` sebagai berikut:
 
 ```c#
-SpriteRotation spriteRotation;
-
-void Start()
+public class RotationInput : MonoBehaviour
 {
-  spriteRotation = GetComponent<SpriteRotation>();
-}
+    SpriteRotation spriteRotation;
 
-void Update()
-{
-    ...
+    void Start()
+    {
+      spriteRotation = GetComponent<SpriteRotation>();
+    }
 
-    // transform.eulerAngles = new Vector3(0, 0, angle);
+    void Update()
+    {
+        ...
 
-    if (spriteRotation != null) {
-        spriteRotation.rotation = angle;
+        // transform.eulerAngles = new Vector3(0, 0, angle);
+
+        if (spriteRotation != null) {
+            spriteRotation.rotation = angle;
+        }
     }
 }
 ```

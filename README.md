@@ -89,4 +89,3 @@ Untuk rincian dari alur pembuatan _game top down_ menggunakan **Unity** sendiri 
 2. [Input dan Gerakan](./Modules/2-Input-dan-Gerakan/README.md)
 3. [Spawn dan Collision](./Modules/3-Spawn-dan-Collision/README.md)
 4. [Navigasi Scene](./Modules/4-Navigasi-Scene/README.md)
-5. [Game Deployment](./Modules/5-Game-Deployment/README.md)
