@@ -6,9 +6,10 @@ public class SpawnOnDestroy : MonoBehaviour
 {
     public GameObject prefab;
 
-    void OnDestroy() {
-      if (prefab != null) {
-        Instantiate(prefab);
-      }
+    void OnDestroy()
+    {
+        if (prefab != null) {
+            Instantiate(prefab);
+        }
     }
 }

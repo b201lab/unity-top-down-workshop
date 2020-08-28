@@ -12,19 +12,17 @@ public class SpriteRotation : MonoBehaviour
 
     void Start()
     {
-      spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-      startDirection = Mathf.Repeat(startDirection, 360);
-      float angle = Mathf.Repeat(rotation - startDirection, 360);
-      int index = (int)Mathf.Round(angle * sprites.Length / 360);
+        startDirection = Mathf.Repeat(startDirection, 360);
+        float angle = Mathf.Repeat(rotation - startDirection, 360);
+        int index = (int)Mathf.Round(angle * sprites.Length / 360);
 
-      // transform.eulerAngles = new Vector3(0, 0, angle);
-
-      if (spriteRenderer != null) {
-        spriteRenderer.sprite = sprites[index % sprites.Length];
-      }
+        if (spriteRenderer != null) {
+            spriteRenderer.sprite = sprites[index % sprites.Length];
+        }
     }
 }
