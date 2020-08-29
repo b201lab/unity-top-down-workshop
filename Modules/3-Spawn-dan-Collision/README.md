@@ -345,4 +345,4 @@ Selain itu kita juga mengenal beberapa konsep baru di **Unity** seperti detail d
 
 Pada bagian selanjutnya kita akan mematangkan lagi game yang sudah kita buat dengan menambahkan _scene_ baru untuk keperluan _menu_, menambahkan tatap muka pada _game_, serta menerapkan sistem _score_ pada _game_ yang kita buat.
 
-[Lanjut bagian keempat, Navigasi _Scene_](../4-navigasi-scene/README.md)
+[Lanjut bagian keempat, Navigasi _Scene_](../4-Navigasi-Scene/README.md)
