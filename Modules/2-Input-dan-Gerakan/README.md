@@ -260,4 +260,4 @@ Selain itu kita juga mempelajari beberapa konsep tambahan dari **Unity** seperti
 
 Pada bagian selanjutnya kita akan membahas lebih lanjut mengenai _spawn_ yang bisa digunakan untuk menambahkan _game object_ secara otomatis selama _game_ sedang berlangsung dan _collision_ yang nantinya digunakan untuk mengatur interaksi dari satu objek dengan objek lain ketika bertemu.
 
-[Lanjut bagian ketiga, _Spawn_ dan _Collision_](../3-spawn-dan-collision/README.md)
+[Lanjut bagian ketiga, _Spawn_ dan _Collision_](../3-Spawn-dan-Collision/README.md)
